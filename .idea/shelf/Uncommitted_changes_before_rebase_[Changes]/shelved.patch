@@ -1,0 +1,138 @@
+Index: app.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>from flask import Flask, request, jsonify\r\nimport weather\r\n\r\napp = Flask(__name__)\r\n\r\n@app.route('/weather', methods=['GET'])\r\ndef get_weather():\r\n    city = request.args.get('city')\r\n    if not city:\r\n        return jsonify({'error': 'City not provided'}), 400\r\n\r\n    weather_data = weather.get_weather(city)\r\n    return jsonify(weather_data)\r\n\r\nif __name__ == '__main__':\r\n    app.run(host='0.0.0.0', port=5000)\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app.py b/app.py
+--- a/app.py	(revision def5b8d4761b2538d82c31730c8e5f9c588dd9aa)
++++ b/app.py	(date 1708714617693)
+@@ -3,6 +3,7 @@
+ 
+ app = Flask(__name__)
+ 
++
+ @app.route('/weather', methods=['GET'])
+ def get_weather():
+     city = request.args.get('city')
+@@ -11,6 +12,7 @@
+ 
+     weather_data = weather.get_weather(city)
+     return jsonify(weather_data)
+-
++dds
++sdfs
+ if __name__ == '__main__':
+     app.run(host='0.0.0.0', port=5000)
+Index: styles.css
+===================================================================
+diff --git a/styles.css b/styles.css
+deleted file mode 100644
+--- a/styles.css	(revision def5b8d4761b2538d82c31730c8e5f9c588dd9aa)
++++ /dev/null	(revision def5b8d4761b2538d82c31730c8e5f9c588dd9aa)
+@@ -1,55 +0,0 @@
+-body {
+-    font-family: Arial, sans-serif;
+-    background-color: #f0f0f0;
+-    display: flex;
+-    align-items: center;
+-    justify-content: center;
+-    height: 100vh;
+-    margin: 0;
+-}
+-
+-.weather-widget {
+-    background-color: #fff;
+-    padding: 20px;
+-    border-radius: 10px;
+-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+-    text-align: center;
+-}
+-
+-label {
+-    font-size: 16px;
+-    font-weight: bold;
+-}
+-
+-input, button {
+-    margin: 10px;
+-    padding: 8px;
+-    font-size: 16px;
+-}
+-
+-button {
+-    cursor: pointer;
+-    background-color: #4caf50;
+-    color: #fff;
+-    border: none;
+-    border-radius: 5px;
+-    padding: 10px;
+-}
+-
+-#weatherInfo {
+-    margin-top: 20px;
+-}
+-
+-h2 {
+-    margin-bottom: 10px;
+-}
+-
+-#temperature, #description {
+-    font-size: 18px;
+-    margin-bottom: 8px;
+-}
+-
+-#weatherIcon {
+-    width: 50px;
+-    height: 50px;
+-}
+Index: index.html
+===================================================================
+diff --git a/index.html b/index.html
+deleted file mode 100644
+--- a/index.html	(revision def5b8d4761b2538d82c31730c8e5f9c588dd9aa)
++++ /dev/null	(revision def5b8d4761b2538d82c31730c8e5f9c588dd9aa)
+@@ -1,42 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-    <meta charset="UTF-8">
+-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+-    <title>Weather App</title>
+-    <link rel="stylesheet" href="styles.css">
+-</head>
+-<body>
+-    <div class="weather-widget">
+-        <label for="cityInput">Enter City:</label>
+-        <input type="text" id="cityInput" placeholder="City">
+-        <button onclick="getWeather()">Get Weather</button>
+-        <div id="weatherInfo">
+-            <h2 id="cityName"></h2>
+-            <div id="temperature"></div>
+-            <div id="description"></div>
+-            <img id="weatherIcon" alt="Weather Icon">
+-        </div>
+-    </div>
+-
+-    <script>
+-        function getWeather() {
+-            const cityInput = document.getElementById('cityInput').value;
+-            fetch(`/.netlify/functions/weather?city=${cityInput}`)
+-                .then(response => response.json())
+-                .then(data => {
+-                    const cityName = document.getElementById('cityName');
+-                    const temperature = document.getElementById('temperature');
+-                    const description = document.getElementById('description');
+-                    const weatherIcon = document.getElementById('weatherIcon');
+-
+-                    cityName.textContent = `Weather in ${data.city}`;
+-                    temperature.textContent = `Temperature: ${data.temperature}°C`;
+-                    description.textContent = `Description: ${data.description}`;
+-                    weatherIcon.src = `http://openweathermap.org/img/w/${data.icon}.png`;
+-                })
+-                .catch(error => console.error('Error:', error));
+-        }
+-    </script>
+-</body>
+-</html>
