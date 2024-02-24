@@ -13,13 +13,13 @@ Instructions for installing and using the project
 - Open a terminal (or command line) on your computer.
 - Clone the repository using the command:
   ```bash
-  git clone https://github.com/Alice-
-Tempesta/Project-Weather.git
+  git clone https://github.com/Alice-Tempesta/Project-Weather.git
   ```
 
 #### 2. Installing dependencies
 
 - Go to the project directory:
+  
   ```bash
   cd your_repository
   ```
@@ -33,8 +33,7 @@ Tempesta/Project-Weather.git
 
 #### 3. Setting environment variables
 
-- Create a file `.
-env` in the project root.
+- Create a file `.env` in the project root.
 
 - Add the necessary environment variables to `.env`, for example:
   ```env
