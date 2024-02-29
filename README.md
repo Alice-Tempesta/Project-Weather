@@ -9,7 +9,7 @@ This project is a simple Weather App that provides weather information for a giv
 #### 1. Clone the Repository:
 
 ```bash
-git clone https://github.com/Alice-Tempesta/Project-Weather.git
+git clone git://github.com/Alice-Tempesta/Project-Weather.git
 cd Project-Weather
 ```
 #### 2. Obtaining the OpenWeatherMap API key:
