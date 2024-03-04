@@ -4,6 +4,8 @@
 
 This project is a simple Weather App that provides weather information for a given city. It consists of a backend developed using Flask (Python) and a frontend with HTML, CSS, and JavaScript. The backend interacts with the <a href= https://openweathermap.org>OpenWeatherMap<a/> API to retrieve weather data, and the frontend allows users to input a city and view its weather details.
 
+### It is planned to add information about the country, time, etc., in which the city is located sing the library <a href= "https://openweathermap.org">`countryinfo`<a/>
+
 ### Instructions:
 
 #### 1. Clone the Repository:
